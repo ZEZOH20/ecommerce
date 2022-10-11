@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Exists;
+
 class CategoryController extends Controller
 {
     /** y1P9M3CFh6nQKKI6YdbvfXFrGF0KuiEU5xY3AVP7*/
@@ -30,9 +32,9 @@ class CategoryController extends Controller
     public function show($id)
     {
    
-        $data['category']=Category::where('id',$id)->first();
+        $data['category']=Category::findOrFail($id);
         $data['departments']=$data['category']->Departments()->get();
-
+       
         return response([
          'data'=>$data
      ],200);
