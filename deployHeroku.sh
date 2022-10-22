@@ -5,3 +5,4 @@ read CurrCommit
 git add .
 git commit -m '$CurrCommit'
 git push heroku main
+
