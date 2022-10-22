@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#heroku config:add APP_DEBUG=true
-#heroku config:add APP_KEY=base64:zJ5XZKJLIOfJf+F9j1jOVXQtdO7hBW9H+tX8G8fBjww=
+heroku config:add APP_DEBUG=true
+heroku config:add APP_KEY=base64:zJ5XZKJLIOfJf+F9j1jOVXQtdO7hBW9H+tX8G8fBjww=
 heroku config:add APP_NAME=Laravel
 heroku config:add APP_ENV=production
 heroku config:add APP_URL=http://localhost

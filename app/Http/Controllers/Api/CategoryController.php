@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\Rules\Exists;
 
 class CategoryController extends Controller
@@ -29,15 +30,17 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,ClientRequest $request)
     {
-   
         $data['category']=Category::findOrFail($id);
         $data['departments']=$data['category']->Departments()->get();
        
-        return response([
-         'data'=>$data
-     ],200);
+        if($request->tokenCan('write')){
+            return response([
+                'data'=>$data
+            ],200);
+        }
+       
         
     }
 
