@@ -6,3 +6,4 @@ git add .
 git commit -m '$CurrCommit'
 git push heroku main
 
+#you must be root to run this file
